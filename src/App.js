@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 
-function App() {
+export function replaceCamelWithSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, " $1");
+}
+
+export function App() {
   const [color, setColor] = useState("red");
   const [enable, setEnable] = useState(true);
 
@@ -10,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <button
-        style={{ backgroundColor: `${color}` }}
+        style={{ backgroundColor: `${enable ? color : "grey"}` }}
         onClick={() => changeColor()}
         disabled={!enable}
       >
@@ -19,7 +23,7 @@ function App() {
       <label htmlFor="disable-button-checkbox">Disable button</label>
       <input
         id="disable-button-checkbox"
-        role="checkbox"
+        type="checkbox"
         aria-checked={!enable}
         onClick={() => setEnable(!enable)}
       />
