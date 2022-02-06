@@ -4,20 +4,24 @@ import App, { replaceCamelWithSpaces } from "./App";
 test("button has corect initial color", () => {
   render(<App />);
 
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const colorButton = screen.getByRole("button", {
+    name: "Change to MidnightBlue"
+  });
 
-  expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+  expect(colorButton).toHaveStyle({ backgroundColor: "MediumVioletRed" });
 
   fireEvent.click(colorButton);
 
-  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
-  expect(colorButton.textContent).toBe("Change to red");
+  expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
+  expect(colorButton.textContent).toBe("Change to MediumVioletRed");
 });
 
 test("initil conditions", () => {
   render(<App />);
 
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+  const colorButton = screen.getByRole("button", {
+    name: "Change to MidnightBlue"
+  });
 
   expect(colorButton).toBeEnabled();
   const checkBox = screen.getByRole("checkbox");
@@ -34,7 +38,7 @@ test("disable button on checked", () => {
   fireEvent.click(checkBox);
   expect(colorButton).toBeEnabled();
   fireEvent.click(colorButton);
-  expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+  expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
 });
 
 describe("spaces before camel case letters", () => {
